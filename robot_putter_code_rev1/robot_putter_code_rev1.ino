@@ -2,6 +2,7 @@
 #include "printf.h"
 #include "RF24.h"
 #include <Adafruit_MotorShield.h>
+#define led 4
 
 unsigned long lastReceiveTime = 0;
 unsigned long currentTime = 0;
@@ -63,9 +64,9 @@ void setup() {
   Serial.println("Motor Shield found.");
 
   //-------MOTOR SETUP PARAMETERS-------
-  leftMotor->setSpeed(255); // max speed is 255
-  rightMotor->setSpeed(255); // max speed is 255
-  putterMotor->setSpeed(150); // max speed is 255
+  leftMotor->setSpeed(0); // max speed is 255
+  rightMotor->setSpeed(0); // max speed is 255
+  putterMotor->setSpeed(0); // max speed is 255
   leftMotor->run(RELEASE);
   rightMotor->run(RELEASE);
   putterMotor->run(RELEASE);
@@ -80,66 +81,65 @@ void loop() {
     uint8_t bytes = radio.getPayloadSize(); // get the size of the payload
     radio.read(&data, sizeof(Data_Package));            // fetch payload from FIFO
     lastReceiveTime = millis();
-    Serial.print(F("Received "));
-    Serial.print(bytes);                    // print the size of the payload
-    Serial.print(F(" bytes on pipe "));
-    Serial.print(pipe);                     // print the pipe number
-    Serial.print(F(": "));
-    Serial.print(data.X1);                // print the payload's value
-    Serial.print(", ");                // print the payload's value
-    Serial.print(data.X2);                // print the payload's value
-    Serial.print(", ");
-    Serial.println(data.button1);                // print the payload's value
+    /*
+      Serial.print(F("Received "));
+      Serial.print(bytes);                    // print the size of the payload
+      Serial.print(F(" bytes on pipe "));
+      Serial.print(pipe);                     // print the pipe number
+      Serial.print(F(": "));
+      Serial.print(data.X1);                // print the payload's value
+      Serial.print(", ");                // print the payload's value
+      Serial.print(data.X2);                // print the payload's value
+      Serial.print(", ");
+      Serial.println(data.button1);                // print the payload's value
+    */
+    digitalWrite(led, HIGH);
+  }
 
-  } 
-
-  //if (currentTime - lastReceiveTime > 3000 ) { // If current time is more then 1 second since we have recived the last data, that means we have lost connection
-  //  resetData(); // If connection is lost, reset the data. It prevents unwanted behavior, for example if a drone jas a throttle up, if we lose connection it can keep flying away if we dont reset the function
-  //}
+  else if (currentTime - lastReceiveTime > 3000 ) { // If current time is more then 1 second since we have recived the last data, that means we have lost connection
+    resetData(); // If connection is lost, reset the data. It prevents unwanted behavior, for example if a drone jas a throttle up, if we lose connection it can keep flying away if we dont reset the function
+    digitalWrite(led, LOW);
+  }
 
   //process the data to see what the robot should do
   if (data.button1 > 1) {
     currentTime = millis();
-    if (currentTime - lastPuttTime > 5000) {
+    if (currentTime - lastPuttTime > 3000) {
       putt();
       lastPuttTime = millis();
     }
   }
 
-  leftMotor->setSpeed(motorSpeed);
+  leftMotor->setSpeed(motorSpeed-2);
   rightMotor->setSpeed(motorSpeed);
 
-   if (data.X1 == 1 && data.X2 == 1 && data.Y1 == 0 ) {
+  if (data.X1 == 1 && data.X2 == 1 && data.Y1 == 0 ) {
     rotateLeft();
   }
   else if (data.X1 == 1 && data.X2 == 1 && data.Y2 == 0 ) {
     rotateRight();
   }
-  else if (data.X1 ==0 && data.Y1 == 1 && data.Y2 == 1) {
+  else if (data.X1 == 0 && data.Y1 == 1 && data.Y2 == 1) {
     moveForward();
   }
-  else if (data.X2 ==0 && data.Y1 == 1 && data.Y2 == 1) {
+  else if (data.X2 == 0 && data.Y1 == 1 && data.Y2 == 1) {
     moveBackward();
   }
-  else if (data.X1 ==0 && data.Y1 == 0) {
+  else if (data.X1 == 0 && data.Y1 == 0) {
     moveLeftForward();
   }
-  else if (data.X1 ==0 && data.Y2 == 0) {
+  else if (data.X1 == 0 && data.Y2 == 0) {
     moveRightForward();
   }
- 
-  else if (data.X2 ==0 && data.Y2 == 0) {
+  else if (data.X2 == 0 && data.Y2 == 0) {
     moveRightBackward();
   }
-  else if (data.X2 ==0 && data.Y1 == 0) {
+  else if (data.X2 == 0 && data.Y1 == 0) {
     moveLeftBackward();
   }
-
-  
   else {
     stopMoving();
   }
-  
 
 
 } //loop
@@ -155,26 +155,26 @@ void putt()
   int returnStroke;
   int puttMotorSpeed;
 
-  if (data.puttSpeed > 700){ //fast putt
-    
+  if (data.puttSpeed > 700) { //fast putt
+
     backwardStroke = 120;
     forwardStroke = 50;
-    returnStroke = 71;
-    puttMotorSpeed = 255;  
+    returnStroke = 67;
+    puttMotorSpeed = 255;
   }
   else if (data.puttSpeed < 300) { //slow putt
     backwardStroke = 70;
     forwardStroke = 40;
-    returnStroke = 62; 
-    puttMotorSpeed = 150; 
+    returnStroke = 62;
+    puttMotorSpeed = 150;
   }
   else { //medium putt
     backwardStroke = 80;
     forwardStroke = 30;
-    returnStroke = 64; 
+    returnStroke = 64;
     puttMotorSpeed = 255;
   }
-  
+
   //run motor backwards to swing putter back
   putterMotor->run(BACKWARD);
   for (i = 0; i < backwardStroke; i++) {
@@ -201,7 +201,7 @@ void putt()
   //return to home
 
 
-   putterMotor->run(BACKWARD);
+  putterMotor->run(BACKWARD);
   for (i = 0; i < returnStroke; i++) {
     putterMotor->setSpeed(i);
     delay(10);
@@ -239,22 +239,22 @@ void rotateRight() {
   rightMotor->run(BACKWARD);
 }
 void moveRightForward() {
-  rightMotor->setSpeed(motorSpeed/2);
+  rightMotor->setSpeed(motorSpeed / 2);
   leftMotor->run(FORWARD);
   rightMotor->run(FORWARD);
 }
 void moveRightBackward() {
-  rightMotor->setSpeed(motorSpeed/2);
+  rightMotor->setSpeed(motorSpeed / 2);
   leftMotor->run(BACKWARD);
   rightMotor->run(BACKWARD);
-} 
+}
 void moveLeftForward() {
-  leftMotor->setSpeed(motorSpeed/2);
+  leftMotor->setSpeed(motorSpeed / 2);
   leftMotor->run(FORWARD);
   rightMotor->run(FORWARD);
 }
 void moveLeftBackward() {
-  leftMotor->setSpeed(motorSpeed/2);
+  leftMotor->setSpeed(motorSpeed / 2);
   leftMotor->run(BACKWARD);
   rightMotor->run(BACKWARD);
 }
@@ -265,8 +265,6 @@ void stopMoving() {
 
 void resetData() {
   Serial.println("reset data");
-  //digitalWrite(statusLED, HIGH);
-  //digitalWrite(confirmLED, LOW);
   // Reset the values when there is no radio connection - Set initial default values
   data.X1 = 1;
   data.X2 = 1;
