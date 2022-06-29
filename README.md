@@ -42,4 +42,4 @@ All of the custom parts are 3D Printed on a filamnet printer with PLA.
 
 | Description | Quantity | Ordering Information | Comments |  
 | --- | :---: | --- | --- |
-|Printer Filament<br>PLA|1|[MatterHackers M-EED-KTKU]https://www.matterhackers.com/store/l/175mm-pla-filament-white-1-kg/sk/MEEDKTKU)| Color does not matter. Diameter for most filament printers should be 1.75mm |
+|Printer Filament<br>PLA|1|[MatterHackers M-EED-KTKU](https://www.matterhackers.com/store/l/175mm-pla-filament-white-1-kg/sk/MEEDKTKU)| Color does not matter. Diameter for most filament printers should be 1.75mm |
