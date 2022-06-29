@@ -37,3 +37,9 @@ putter_controller_rf_code is the arduino program that controls the remote contro
 |Adaptive Controller<br>Nintendo HORI Flex|1|[HORI #NSW-280U](https://stores.horiusa.com/flex-controller-for-nintendo-switch/?showHidden=true)|[Any switch with a 3.5mm jack](https://www.ablenetinc.com/switches/all-switches/) can be used with this controller. 
 
 ### 3. Mechanical
+
+All of the custom parts are 3D Printed on a filamnet printer with PLA. 
+
+| Description | Quantity | Ordering Information | Comments |  
+| --- | :---: | --- | --- |
+|Printer Filament<br>PLA|1|[MatterHackers M-EED-KTKU]https://www.matterhackers.com/store/l/175mm-pla-filament-white-1-kg/sk/MEEDKTKU)| Color does not matter. Diameter for most filament printers should be 1.75mm |
