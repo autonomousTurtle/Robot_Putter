@@ -31,6 +31,6 @@ putter_controller_rf_code is the arduino program that controls the remote contro
 |Putter Servo Motor<br>Tenergy NiMH Charger 6-12V|1|[Tenergy Power #01025](https://power.tenergy.com/tenergy-smart-universal-charger-for-nimh-nicd-battery-packs-6v-12v-ul/)|Can also use [Tenergy NiHM 7.2-12V Charger](https://power.tenergy.com/tenergy-smart-universal-charger-for-nimh-nicd-battery-packs-7-2v-12v-ul/)
 |Camera Servo Motor<br>Tenergy NiMH Charger 6-12V|1|[Tenergy Power #01025](https://power.tenergy.com/tenergy-smart-universal-charger-for-nimh-nicd-battery-packs-6v-12v-ul/)|Can also use [Tenergy NiHM 7.2-12V Charger](https://power.tenergy.com/tenergy-smart-universal-charger-for-nimh-nicd-battery-packs-7-2v-12v-ul/)
 |Tank Tread Base<br>Tenergy NiMH Charger 6-12V|1|[Tenergy Power #01025](https://power.tenergy.com/tenergy-smart-universal-charger-for-nimh-nicd-battery-packs-6v-12v-ul/)|Can also use [Tenergy NiHM 7.2-12V Charger](https://power.tenergy.com/tenergy-smart-universal-charger-for-nimh-nicd-battery-packs-7-2v-12v-ul/)
-
+|Adaptive Controller<br>Nintendo HORI Flex|1|[HORI #NSW-280U](https://stores.horiusa.com/flex-controller-for-nintendo-switch/?showHidden=true)|[Any switch with a 3.5mm jack](https://www.ablenetinc.com/switches/all-switches/) can be used with this controller. 
 
 ### 3. Mechanical
