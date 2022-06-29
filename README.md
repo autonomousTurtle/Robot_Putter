@@ -10,7 +10,9 @@ putter_controller_rf_code is the arduino program that controls the remote contro
 
 ### Wiring Diagram
 
-### Electrical Components
+## BOM
+
+### 1. Electrical
 | Description | Quantity | Ordering Information | Comments |  
 | --- | :---: | --- | --- |
 |Adafruit Servo Driver Breakout<br>PCA9685|1|[Adafruit](https://www.adafruit.com/product/815)|Adafruit: [Drawings and Tutorials](https://learn.adafruit.com/16-channel-pwm-servo-driver/downloads)|
@@ -23,9 +25,12 @@ putter_controller_rf_code is the arduino program that controls the remote contro
 |BEC<br>5V Universal Battery Elimination Circuit|1|[Tenergy Power #01025](https://power.tenergy.com/tenergy-smart-universal-charger-for-nimh-nicd-battery-packs-6v-12v-ul/)|Can also use [Tenergy NiHM 7.2-12V Charger](https://power.tenergy.com/tenergy-smart-universal-charger-for-nimh-nicd-battery-packs-7-2v-12v-ul/)
 
 
-### Electro-Mechanical 
+### 2. Electro-Mechanical 
 | Description | Quantity | Ordering Information | Comments |  
 | --- | :---: | --- | --- |
 |Putter Servo Motor<br>Tenergy NiMH Charger 6-12V|1|[Tenergy Power #01025](https://power.tenergy.com/tenergy-smart-universal-charger-for-nimh-nicd-battery-packs-6v-12v-ul/)|Can also use [Tenergy NiHM 7.2-12V Charger](https://power.tenergy.com/tenergy-smart-universal-charger-for-nimh-nicd-battery-packs-7-2v-12v-ul/)
 |Camera Servo Motor<br>Tenergy NiMH Charger 6-12V|1|[Tenergy Power #01025](https://power.tenergy.com/tenergy-smart-universal-charger-for-nimh-nicd-battery-packs-6v-12v-ul/)|Can also use [Tenergy NiHM 7.2-12V Charger](https://power.tenergy.com/tenergy-smart-universal-charger-for-nimh-nicd-battery-packs-7-2v-12v-ul/)
 |Tank Tread Base<br>Tenergy NiMH Charger 6-12V|1|[Tenergy Power #01025](https://power.tenergy.com/tenergy-smart-universal-charger-for-nimh-nicd-battery-packs-6v-12v-ul/)|Can also use [Tenergy NiHM 7.2-12V Charger](https://power.tenergy.com/tenergy-smart-universal-charger-for-nimh-nicd-battery-packs-7-2v-12v-ul/)
+
+
+### 3. Mechanical
