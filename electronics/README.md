@@ -1,7 +1,7 @@
 # ROBOT PUTTER ELECTRONICS
 
 ### Detailed Wiring
-
+<img src="images/Wiring_Diagram_0.png" width="400">
 
 ### 1. Electrical Components
 | Description | Quantity | Ordering Information | Comments |  
