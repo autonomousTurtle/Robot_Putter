@@ -28,7 +28,7 @@
 
  ****************************************************/
 
-#include <SoftwareSerial.h>
+//#include <SoftwareSerial.h>
 #include <Adafruit_PWMServoDriver.h>
 #include <Wire.h>
 #include <Timer.h>
@@ -36,12 +36,12 @@
 #include <PololuQik.h>
 
 // ---------- L298N Motor Driver ---------
-#define enA 13
+#define enA 9
 #define in1 12
 #define in2 11
-#define in3 10
-#define in4 9
-#define enB 8
+#define in3 8
+#define in4 13
+#define enB 10
 
 
 // ---------- POLOLU MOTOR DRIVER -----------
