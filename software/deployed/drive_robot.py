@@ -8,7 +8,7 @@ import Gamepad
 
 # GLOBAL VARIABLES
 # set frame rate - how many cycles/second to run the loop
-FRAMERATE = 30
+FRAMERATE = 15
 # how long does each frame take in seconds?
 FRAME = 1.0/FRAMERATE
 # initialize myTimer
@@ -24,6 +24,14 @@ timeError = 0.0
 startup = True
 CANCEL_MOVE_COUNT = 4 #number of loops unitl we send a 0 drive command
 cancl_move_counter = 0
+
+full_speed = 255 # what is the full speed of the robot, max is 255
+current_speed_L = 0 # keep track of how fast the left motor is moving
+current_speed_R = 0 # keep track of how fast the right motors is moving 
+desired_speed = 0 # keep track of how fast the right motors is moving
+current_speed = 0 # keep track of how fast the right motors is moving
+
+prev_drive_messge_sent = False # track if we previously sent a drive message so we can send 0's if we want to stop
 
 # controller setup
 buttonHappy = 'CROSS'
@@ -94,7 +102,7 @@ def processData(dataLine):
         # process error data
         print("ARDUINO ERROR MESSSAGE ", payload)
         # log the error
-        rospy.loginfo(payload)
+        #rospy.loginfo(payload)
     return
 
 # grab strokes from the keyboard and send them over
@@ -110,6 +118,10 @@ def upDownAxisMoved(position):
     global upDown
     upDown = position # Non-inverted
     print(upDown)
+
+def getSpeed(postion):
+    global current_speed_R
+    global current_speed_L
 
 # initialize the joysticks
 if not Gamepad.available():
@@ -128,6 +140,7 @@ serialPort = "/dev/ttyACM0"
 # open the serial port to arduino
 ser = serial.Serial(serialPort,115200,timeout=0)
 # serial port with setting 38,400 baud, 8 bits, No parity, 1 stop bit=
+ser.reset_input_buffer()
 
 # Set some initial state
 leftRight = 0.0
@@ -138,6 +151,7 @@ gamepad.addAxisMovedHandler(joystickUpDown, upDownAxisMoved)
 frameKnt = 0  # counter used to time processes
 newDriveMessage = False
 newPuttMessage = False
+
 try:
     while True:
 
@@ -153,12 +167,13 @@ try:
         topOfFrame = time.time()
 
         # read data from serial port
-        serData = ser.readline().decode('utf-8').rstrip()
-        if len(serData) > 0:
-            print(f"serial data: {serData}")
+        if ser.in_waiting > 0:
+            serData = ser.readline().decode('utf-8').rstrip()
+            if len(serData) > 0:
+                print(f"serial data: {serData}")
         # process the data from the arduino
         # read and parse the lines to avoid any blocking
-        holdBuffer = readBuffer(serData)
+            holdBuffer = readBuffer(serData)
 
         com = ','
         EOL = '>'
@@ -176,55 +191,56 @@ try:
         if gamepad.beenReleased(1): # B
             print("B Released")
 
-        
-        
+        # set speeds, range (0-255)
+        if upDown > .25 or upDown < -.25:
+            desired_speed = int(full_speed * abs(upDown))
+        elif leftRight < -.25 or leftRight > .25:
+            desired_speed = int(full_speed * abs(leftRight))
+        else:
+            desired_speed = 0
+
+        #print("Desired speed: ", desired_speed)
+
+        if desired_speed > full_speed:
+            desired_speed = full_speed
+        if desired_speed > 0 and desired_speed < 60:
+            desired_speed = 60
+
+        current_speed = desired_speed
+
         if upDown > .3:
             if leftRight > .3:
                 print("right and down")
-                robMessage = "DRV"+com+str(255)+com+str(-255)+EOL
+                robMessage = "DRV"+com+str(desired_speed)+com+str(-int(desired_speed/2))+EOL
             elif leftRight < -.3:
                 print("left and down")
-                robMessage = "DRV"+com+str(255)+com+str(-255)+EOL
+                robMessage = "DRV"+com+str(int(desired_speed/2))+com+str(-desired_speed)+EOL
             else:
                 print("down")
-                robMessage = "DRV"+com+str(255)+com+str(-255)+EOL
+                robMessage = "DRV"+com+str(desired_speed)+com+str(-desired_speed)+EOL
             newDriveMessage = True
         elif upDown < -.3:
             if leftRight > .3:
                 print("right and up")
-                robMessage = "DRV"+com+str(-130)+com+str(255)+EOL
+                robMessage = "DRV"+com+str(-desired_speed)+com+str(int(desired_speed/2))+EOL
             elif leftRight < -.3:
                 print("left and up")
-                robMessage = "DRV"+com+str(-255)+com+str(-130)+EOL
+                robMessage = "DRV"+com+str(-int(desired_speed/2))+com+str(desired_speed)+EOL
             else:
                 print("up")
-                robMessage = "DRV"+com+str(-255)+com+str(255)+EOL
+                robMessage = "DRV"+com+str(-desired_speed)+com+str(desired_speed)+EOL
             newDriveMessage = True
         else:
             if leftRight > .3:
                 print("spin right")
-                robMessage = "DRV"+com+str(255)+com+str(255)+EOL
+                robMessage = "DRV"+com+str(-desired_speed)+com+str(-desired_speed)+EOL
                 newDriveMessage = True
             elif leftRight < -.3:
                 print("spin left")
-                robMessage = "DRV"+com+str(-255)+com+str(-255)+EOL
+                robMessage = "DRV"+com+str(desired_speed)+com+str(desired_speed)+EOL
                 newDriveMessage = True
-
-        
-        
-        
-
-        
-        
-
-
-        
-
-
-
-        if not newDriveMessage:
-            robMessage = "DRV"+com+str(0)+com+str(0)+EOL
-            newDriveMessage = True
+            else:
+                current_speed = 0
 
 
         if newDriveMessage:
@@ -233,26 +249,23 @@ try:
             ser.flush() # output Now
             newDriveMessage = False
             cancl_move_counter= 0
-        '''
-        else:
-            
-            if cancl_move_counter > CANCEL_MOVE_COUNT:
-                robMessage = "DRV"+com+str(0)+com+str(0)+EOL
-                ser.write(str.encode(robMessage))
-                ser.flush() # output Now
-                newDriveMessage = False
-                cancl_move_counter=0
-            else:
-                cancl_move_counter =+1'''
+            prev_drive_messge_sent = True # we just sent a drive message
 
-        if newPuttMessage == True:
+        elif prev_drive_messge_sent == True:
+            robMessage = "DRV"+com+str(0)+com+str(0)+EOL
+            current_speed = 0
+            ser.write(str.encode(robMessage))
+            ser.flush() # output Now
+            prev_drive_messge_sent = False
+            newDriveMessage = False
+        
+        elif newPuttMessage == True:
             robMessage = "P"+com+str(0)+com+str(0)+EOL
             ser.write(str.encode(robMessage))
             ser.flush() # output Now
-            newPuttMessage = False
-            
+            newPuttMessage = False 
 
-        if frameKnt % (FRAMERATE/1) == 0:  # twice per second
+        elif frameKnt % (FRAMERATE) == 0:  # once per second
             hbMessage = "HBB"+com+str(time.time())[-7:]+EOL
             print(hbMessage)
             ser.write(str.encode(hbMessage))
@@ -277,7 +290,7 @@ try:
         endOfFrame = time.time()
         startup = False
         # end of the main loop
-        #
+        
 
 finally:
     gamepad.disconnect()
