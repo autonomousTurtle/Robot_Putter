@@ -3,24 +3,7 @@
   Online Libraries:
   Timer.h - JChristhensen's Timer Library https://github.com/JChristensen/Timer
   Event.h - Arcturial arduino event https://github.com/arcturial/arduino-event
-
-
-  Link to the Adafruit PWM Servo Driver
-  http://www.adafruit.com/products/815
-
-  Link to Pololu Qik Motor Driver Driver
-  https://github.com/pololu/qik-arduino
-
-  Required connections between Arduino and Qik 2s9v1:
-
-      Arduino     Qik 2s9v1
-   -------------------------
-             5V - VCC
-            GND - GND
-  Digital Pin 2 - TX
-  Digital Pin 3 - RX
-  Digital Pin 4 - RESET
-
+  Link to the Adafruit PWM Servo Driver  http://www.adafruit.com/products/815
 
   Link to Raspberry Pi to Arduino Serial Comm:
   https://www.aranacorp.com/en/serial-communication-between-raspberry-pi-and-arduino/
@@ -28,12 +11,11 @@
 
  ****************************************************/
 
-//#include <SoftwareSerial.h>
 #include <Adafruit_PWMServoDriver.h>
 #include <Wire.h>
 #include <Timer.h>
 #include <Event.h>
-#include <PololuQik.h>
+
 
 // ---------- L298N Motor Driver ---------
 #define enA 9
@@ -44,11 +26,11 @@
 #define enB 10
 
 
-// ---------- POLOLU MOTOR DRIVER -----------
-PololuQik2s9v1 qik(2, 3, 4);
-
-// Left motor is M0
-// Right motor is M1
+// ---------- LED Pins ---------
+#define LED1 3  // status LED, green is online and HB is good
+#define LED2 2
+#define LED3 4
+#define LED4 5
 
 
 // ---------- SERVO DRIVER -----------
@@ -92,14 +74,11 @@ void clearHBB() {
   // stop all of the motors
   analogWrite(enA, 0); // Send PWM signal to L298N Enable pin
   analogWrite(enB, 0); // Send PWM signal to L298N Enable pin
-  //qik.setM0Speed(0);
-  //qik.setM1Speed(0);
+  digitalWrite(LED1, LOW);
 }
 
 
 void ALLSTOP() {
-  //qik.setM0Speed(0);
-  //qik.setM1Speed(0);
   analogWrite(enA, 0); // Send PWM signal to L298N Enable pin
   analogWrite(enB, 0); // Send PWM signal to L298N Enable pin
   Serial.write("All Stop\n");
@@ -107,18 +86,11 @@ void ALLSTOP() {
 
 
 void setup() {
-
   // Start serial communication with the PC
   Serial.begin(115200);
   hti = 1000;
   timerEvent = timer.after(hti, clearHBB);
-
-  // initiate the motor driver
-  //qik.init();
-  //Serial.print("Firmware version: ");
-  //Serial.write(qik.getFirmwareVersion());
-  //Serial.println(">");
-
+  
   // ---------- L298N Pin Settings ---------
   pinMode(enA, OUTPUT);
   pinMode(in1, OUTPUT);
@@ -127,10 +99,20 @@ void setup() {
   pinMode(in3, OUTPUT);
   pinMode(in4, OUTPUT);
 
+  pinMode(LED1, OUTPUT);
+  pinMode(LED2, OUTPUT);
+  pinMode(LED3, OUTPUT);
+  pinMode(LED4, OUTPUT);
+  
+
   // Set initial rotation direction
   digitalWrite(in1, LOW);
   digitalWrite(in2, HIGH);
 
+  digitalWrite(LED1, LOW);
+  digitalWrite(LED2, LOW);
+  digitalWrite(LED3, LOW);
+  digitalWrite(LED4, LOW);
 
   // servo driver
   pwm.begin();
@@ -188,10 +170,12 @@ void loop() {
       // stop!
       Serial.print("STOP CMD\n");
       ALLSTOP();
+      digitalWrite(LED1, LOW); //status LED on 
     }
 
     // heartbeat - check this first
     if (messageFromPC[0] == 'H') {
+      digitalWrite(LED1, HIGH); //status LED on 
       // parse the time data
       strtokIndx = strtok(NULL, ","); // continues where we left off in the message
       //strcpy(HBBtime, strtokIndx);
@@ -206,10 +190,12 @@ void loop() {
       timer.stop(timerEvent); //candel the last timer
       // set a timer that goes off in 2 seconds
       timerEvent = timer.after(hti, clearHBB);
+      
     }
 
     if (messageFromPC[0] == 'D') {
       hbb = true;
+      digitalWrite(LED1, HIGH); //status LED on 
       timer.stop(timerEvent);
       timerEvent = timer.after(hti, clearHBB);
       // parse data
@@ -240,11 +226,9 @@ void loop() {
         LMotorInput = -LMotorInput;
       }
 
-
       //set motors speeds
       analogWrite(enA, RMotorInput); // Send PWM signal to L298N Enable pin
       analogWrite(enB, LMotorInput); // Send PWM signal to L298N Enable pin
-
       Serial.print("DRV ");
       Serial.print(RMotorInput);
       Serial.println(">");
@@ -252,6 +236,8 @@ void loop() {
 
     if (messageFromPC[0] == 'P') {
       hbb = true;
+      digitalWrite(LED2, HIGH);
+      digitalWrite(LED1, HIGH); //status LED on 
       Serial.print("Putting");
       Serial.print(">");
 
@@ -291,7 +277,7 @@ void loop() {
 
       pwm.setPWM(servonum, 0, servo0_home); // move the servo back home
       delay(500);
-      
+      digitalWrite(LED2, LOW);
     }
   }
 
