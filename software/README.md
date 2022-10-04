@@ -32,6 +32,10 @@ You need to configure serial on the Pi to be able to talk to Aruduino board. You
 `usermod -a -G dialout $USER`
 
 
+### Auto Run Python Script 
+We need to automatically run the drive_robot.py script on boot of the rpi. [Link here is hlepful to get it set up](https://www.codementor.io/@ufukafak/how-to-run-a-python-script-in-linux-with-systemd-1nh2x3hi0e_)
+
+
 ### Motor Driver
 
 
