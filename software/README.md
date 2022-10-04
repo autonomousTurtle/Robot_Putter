@@ -26,6 +26,12 @@ gamepad.startBackgroundUpdates()
 gamepad.disconnect()
 ```
 
+### Serial
+You need to configure serial on the Pi to be able to talk to Aruduino board. You do this by giving the user dialout permissions:
+
+`usermod -a -G dialout $USER`
+
+
 ### Motor Driver
 
 
