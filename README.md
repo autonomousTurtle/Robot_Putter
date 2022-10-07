@@ -1,7 +1,13 @@
 # Robot_Putter
-May we help electrtonic putter
+### [May We Help](https://maywehelp.org/) Putt-Putt Robot
 
-https://maywehelp.org/ 
+
+## Table Of Contents
+1. [BOM](https://github.com/autonomousTurtle/Robot_Putter/blob/main/README.md#bom)
+2. [Assembly](https://github.com/autonomousTurtle/Robot_Putter/edit/main/README.md#assembly)
+3. [Wiring](https://github.com/autonomousTurtle/Robot_Putter/edit/main/README.md#wiring-diagram)
+4. [Software](https://github.com/autonomousTurtle/Robot_Putter/tree/main/software)
+
 
 ### Software Architecture:
 
@@ -9,9 +15,6 @@ https://maywehelp.org/
 * Raspberry Pi: software/deployed/drive_robot.py
 
 
-### Assembly
-
-### Wiring Diagram
 
 ## BOM
 
@@ -47,3 +50,12 @@ All of the custom parts are 3D Printed on a filamnet printer with PLA.
 | Description | Quantity | Ordering Information | Comments |  
 | --- | :---: | --- | --- |
 |Printer Filament<br>PLA|1|[MatterHackers M-EED-KTKU](https://www.matterhackers.com/store/l/175mm-pla-filament-white-1-kg/sk/MEEDKTKU)| Color does not matter. Diameter for most filament printers should be 1.75mm |
+
+
+
+### Assembly
+
+### Wiring Diagram
+
+
+
