@@ -19,6 +19,7 @@ _this code will start automatically with an auto-run script, but to run manually
 ## Rapsberry Pi Connections:
 
 ### LAN
+Raspberry Pi eth0 IP: 192.168.0.1 (ethernet port on the Pi)
 Raspberry Pi LAN IP: 192.168.7.21
 
 ### WAN and SSH
