@@ -5,8 +5,8 @@
 
 ## Table Of Contents
 1. [BOM](https://github.com/autonomousTurtle/Robot_Putter/blob/main/README.md#bom)
-2. [Assembly](https://github.com/autonomousTurtle/Robot_Putter/edit/main/README.md#assembly)
-3. [Wiring](https://github.com/autonomousTurtle/Robot_Putter/edit/main/README.md#wiring-diagram)
+2. [Assembly](https://github.com/autonomousTurtle/Robot_Putter/blob/main/README.md#assembly)
+3. [Wiring](https://github.com/autonomousTurtle/Robot_Putter/blob/main/README.md#wiring-diagram)
 4. [Software](https://github.com/autonomousTurtle/Robot_Putter/tree/main/software)
 
 
