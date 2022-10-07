@@ -48,14 +48,15 @@ All of the custom parts are 3D Printed on a filamnet printer with PLA.
 
 | Description | Quantity | Ordering Information | Comments |  
 | --- | :---: | --- | --- |
-|Putter Servo Mount|1|[MatterHackers M-EED-KTKU](https://www.matterhackers.com/store/l/175mm-pla-filament-white-1-kg/sk/MEEDKTKU)| Holds the 30kg-cm servo |
+|Putter Servo Mount|1|[Putter_Servo_holder_A.STL](https://github.com/autonomousTurtle/Robot_Putter/blob/main/3D%20Prints/Putter_Servo_holder_A.STL) <br> [Putter_Servo_holder_B.STL](https://github.com/autonomousTurtle/Robot_Putter/blob/main/3D%20Prints/Putter_Servo_holder_B.STL) | Holds the 30kg-cm servo, left and right parts |
 |Ball Bearing Inner Housing|1|[BallBearingAttachToRobot_Big_1.STL](https://github.com/autonomousTurtle/Robot_Putter/blob/main/3D%20Prints/BallBearingAttachToRobot_Big_1.STL)| Mounts to Cover Front part |
 |Ball Bearing Outer Housing|1|[BallBearingAttachToRobot_little_1.STL](https://github.com/autonomousTurtle/Robot_Putter/blob/main/3D%20Prints/BallBearingAttachToRobot_little_1.STL)| Holds ball bearing in place wtih the inner housing |
 |Servo Horn Attachment|1|[GolfClubAttach_rev2_bottom_1.STL](https://github.com/autonomousTurtle/Robot_Putter/blob/main/3D%20Prints/GolfClubAttach_rev2_bottom_1.STL)| Attaches the servo horn and fits inside of the ball bearing |
 |Putter Shaft Holder|1|[GolfClubAttach_rev2_top_1.STL](https://github.com/autonomousTurtle/Robot_Putter/blob/main/3D%20Prints/GolfClubAttach_rev2_top_1.STL)| Attaaches to the putter shaft on one end and to the Servo Horn Attachment on the other end |
 |Putter Head|1|[PutterHead.STL](https://github.com/autonomousTurtle/Robot_Putter/blob/main/3D%20Prints/PutterHead.STL)| Feel free to use whatever putter head you want, but 3D printing makes the robot lighter |
 |Motor Driver Breakout Board Mount|1|[Motor_Driver_Board_Holder_rev1.STL](https://github.com/autonomousTurtle/Robot_Putter/blob/main/3D%20Prints/Motor_Driver_Board_Holder_rev1.STL)| Mounts the L298N breakout board to the bottom plate of the robot base |
-|Arduino Uno Mount|1|[Mcmaster ]([https://www.matterhackers.com/store/l/175mm-pla-filament-white-1-kg/sk/MEEDKTKU](https://www.mcmaster.com/5972K293/))| Used of attaching the Uno to the top of the raspberry pi cana kit case |
+|Arduino Uno Mount|1|[Arduino_mount.STL](https://github.com/autonomousTurtle/Robot_Putter/blob/main/3D%20Prints/Arduino_mount.STL)| Used for attaching the Uno to the top of the raspberry pi cana kit case |
+|Servo Driver Board Mount|1|[Servo_Driver_Mount.STL](https://github.com/autonomousTurtle/Robot_Putter/blob/main/3D%20Prints/Servo_Driver_Mount.STL)| Attach the servo driver to the base plate |
 |Cover Front|1|[cover_front_0.STL](https://github.com/autonomousTurtle/Robot_Putter/blob/main/3D%20Prints/cover_front_0.STL)| Covers the front of the robot internals |
 |Cover Rear|1|[cover_back_0.STL](https://github.com/autonomousTurtle/Robot_Putter/blob/main/3D%20Prints/cover_back_0.STL)| Covers the rear of the robot internals |
 |Cover Top|1|[cover_top_cover_0.STL](https://github.com/autonomousTurtle/Robot_Putter/blob/main/3D%20Prints/cover_top_cover_0.STL) | I used clear Lexan for this, but you can also 3D print it |
