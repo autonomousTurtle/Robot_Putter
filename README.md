@@ -3,6 +3,9 @@
 
 <img src="/images/robot_putter_iso.JPG" width="80%">
 
+## Controls
+<img src="/images/Controller.JPG" width="80%">
+
 ## Table Of Contents
 1. [BOM](https://github.com/autonomousTurtle/Robot_Putter/blob/main/README.md#bom)
 2. [Assembly](https://github.com/autonomousTurtle/Robot_Putter/blob/main/README.md#assembly)
