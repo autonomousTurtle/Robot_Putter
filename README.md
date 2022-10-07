@@ -9,13 +9,6 @@
 4. [Software](https://github.com/autonomousTurtle/Robot_Putter/tree/main/software)
 
 
-### Software Architecture:
-
-* Arduino:  software/drive_and_putt/drive_and_putt.ino
-* Raspberry Pi: software/deployed/drive_robot.py
-
-
-
 ## BOM
 
 ### 1. Electrical
@@ -45,17 +38,36 @@
 
 ### 3. Mechanical
 
+| Description | Quantity | Ordering Information | Comments |  
+| --- | :---: | --- | --- |
+|Printer Filament<br>PLA|1|[MatterHackers M-EED-KTKU](https://www.matterhackers.com/store/l/175mm-pla-filament-white-1-kg/sk/MEEDKTKU)| Color does not matter. Diameter for most filament printers should be 1.75mm |
+|Ball Bearing<br>Shielded|1|[Mcmaster ]([https://www.matterhackers.com/store/l/175mm-pla-filament-white-1-kg/sk/MEEDKTKU](https://www.mcmaster.com/5972K293/))| For 30mm shaft diameter |
+
+### 4. 3D Prints
 All of the custom parts are 3D Printed on a filamnet printer with PLA. 
 
 | Description | Quantity | Ordering Information | Comments |  
 | --- | :---: | --- | --- |
-|Printer Filament<br>PLA|1|[MatterHackers M-EED-KTKU](https://www.matterhackers.com/store/l/175mm-pla-filament-white-1-kg/sk/MEEDKTKU)| Color does not matter. Diameter for most filament printers should be 1.75mm |
-
-
+|Putter Servo Mount|1|[MatterHackers M-EED-KTKU](https://www.matterhackers.com/store/l/175mm-pla-filament-white-1-kg/sk/MEEDKTKU)| Holds the 30kg-cm servo |
+|Ball Bearing Inner Housing|1|[Mcmaster ]([https://www.matterhackers.com/store/l/175mm-pla-filament-white-1-kg/sk/MEEDKTKU](https://www.mcmaster.com/5972K293/))| Mounts to Cover Front part |
+|Ball Bearing Outer Housing|1|[Mcmaster ]([https://www.matterhackers.com/store/l/175mm-pla-filament-white-1-kg/sk/MEEDKTKU](https://www.mcmaster.com/5972K293/))| Holds ball bearing in place wtih the inner housing |
+|Servo Horn Attachment|1|[Mcmaster ]([https://www.matterhackers.com/store/l/175mm-pla-filament-white-1-kg/sk/MEEDKTKU](https://www.mcmaster.com/5972K293/))| Attaches the servo horn and fits inside of the ball bearing |
+|Putter Shaft Holder|1|[Mcmaster ]([https://www.matterhackers.com/store/l/175mm-pla-filament-white-1-kg/sk/MEEDKTKU](https://www.mcmaster.com/5972K293/))| Attaaches to the putter shaft on one end and to the Servo Horn Attachment on the other end |
+|Putter Head|1|[Mcmaster ]([https://www.matterhackers.com/store/l/175mm-pla-filament-white-1-kg/sk/MEEDKTKU](https://www.mcmaster.com/5972K293/))| Feel free to use whatever putter head you want, but 3D printing makes the robot lighter |
+|Motor Driver Breakout Board Mount|1|[Mcmaster ]([https://www.matterhackers.com/store/l/175mm-pla-filament-white-1-kg/sk/MEEDKTKU](https://www.mcmaster.com/5972K293/))| Mounts the L298N breakout board to the bottom plate of the robot base |
+|Arduino Uno Mount|1|[Mcmaster ]([https://www.matterhackers.com/store/l/175mm-pla-filament-white-1-kg/sk/MEEDKTKU](https://www.mcmaster.com/5972K293/))| Used of attaching the Uno to the top of the raspberry pi cana kit case |
+|Cover Front|1|[Mcmaster ]([https://www.matterhackers.com/store/l/175mm-pla-filament-white-1-kg/sk/MEEDKTKU](https://www.mcmaster.com/5972K293/))| Covers the front of the robot internals |
+|Cover Rear|1|[Mcmaster ]([https://www.matterhackers.com/store/l/175mm-pla-filament-white-1-kg/sk/MEEDKTKU](https://www.mcmaster.com/5972K293/))| Covers the rear of the robot internals |
 
 ### Assembly
 
 ### Wiring Diagram
+
+
+### Software Architecture:
+
+* Arduino:  software/drive_and_putt/drive_and_putt.ino
+* Raspberry Pi: software/deployed/drive_robot.py
 
 
 
