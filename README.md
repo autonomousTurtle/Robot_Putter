@@ -64,6 +64,17 @@ All of the custom parts are 3D Printed on a filamnet printer with PLA.
 
 ### Assembly
 
+#### Parts Laid Out
+<img src="/images/parts_laid_out.JPG" width="80%">
+
+
+#### Bottom Side
+<img src="/images/bottom_side.JPG" width="80%">
+
+
+#### Top Without Cover
+<img src="/images/top_no_cover.JPG" width="80%">
+
 ### Wiring Diagram
 
 
