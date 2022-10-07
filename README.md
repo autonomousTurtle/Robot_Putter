@@ -11,7 +11,7 @@
 
 ## BOM
 
-### 1. Electrical
+### A. Electrical
 | Description | Quantity | Ordering Information | Comments |  
 | --- | :---: | --- | --- |
 |Adafruit Servo Driver Breakout<br>PCA9685|1|[Adafruit](https://www.adafruit.com/product/815)|Adafruit: [Drawings and Tutorials](https://learn.adafruit.com/16-channel-pwm-servo-driver/downloads)|
@@ -26,7 +26,7 @@
 |Wago Connectors<br>|1|[Digikey 2946-887-952-ND](https://www.digikey.com/en/products/detail/wago-corporation/887-952/15553727?utm_adgroup=Connector%20Kits&utm_source=google&utm_medium=cpc&utm_campaign=Shopping_Product_Kits&utm_term=&utm_content=Connector%20Kits&gclid=CjwKCAjwhNWZBhB_EiwAPzlhNgYpcfNqezbg7MqUFi-a7nLTFvponPX8-Ibews3kH3dT0rUR17UO0xoCeEwQAvD_BwE)<br>[Amazon](https://www.amazon.com/Lukche-LEVER-NUTS-Splicing-Connector-Assortment/dp/B095F2Z3DD/ref=asc_df_B095F2Z3DD/?tag=hyprod-20&linkCode=df0&hvadid=507844586593&hvpos=&hvnetw=g&hvrand=10366094789718545267&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9014901&hvtargid=pla-1322438535805&psc=1)|Other connectors will work (XT60, JST, EC5), Wago simply make it easy to prototype. 
 
 
-### 2. Electro-Mechanical 
+### B. Electro-Mechanical 
 | Description | Quantity | Ordering Information | Comments |  
 | --- | :---: | --- | --- |
 |Putter Servo Motor<br>30KG 270 Degree DS3230|1|[Amazon](https://www.amazon.com/DS3230-30KG-Degree-Digital-Servo/dp/B07VN6F179)<br> [Amazon LJWRC](https://www.amazon.com/LJWRC-DS3230MG-Waterproof-Digital-Degree/dp/B088KJGM4C/ref=asc_df_B088KJGM4C/?tag=hyprod-20&linkCode=df0&hvadid=459700934310&hvpos=&hvnetw=g&hvrand=3437522193926334510&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9014901&hvtargid=pla-944719555418&psc=1)|6.8 V, Full metal gear, waterproof, includes 25T metal servo hub
@@ -36,14 +36,14 @@
 |Warfighter Engaged<br>Joystick FPS|1|[Warfighter](https://warfighterengaged.org/shop/joystix-l-aenef)
 
 
-### 3. Mechanical
+### C. Mechanical
 
 | Description | Quantity | Ordering Information | Comments |  
 | --- | :---: | --- | --- |
 |Printer Filament<br>PLA|1|[MatterHackers M-EED-KTKU](https://www.matterhackers.com/store/l/175mm-pla-filament-white-1-kg/sk/MEEDKTKU)| Color does not matter. Diameter for most filament printers should be 1.75mm |
 |Ball Bearing<br>Shielded|1|[Mcmaster ]([https://www.matterhackers.com/store/l/175mm-pla-filament-white-1-kg/sk/MEEDKTKU](https://www.mcmaster.com/5972K293/))| For 30mm shaft diameter |
 
-### 4. 3D Prints
+### D. 3D Prints
 All of the custom parts are 3D Printed on a filamnet printer with PLA. 
 
 | Description | Quantity | Ordering Information | Comments |  
