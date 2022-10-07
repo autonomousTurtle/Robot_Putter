@@ -1,5 +1,10 @@
 # SOFTWARE 
 
+## Overview: 
+
+This robot uses [subsumption control architecure](https://en.wikipedia.org/wiki/Subsumption_architecture) to manage both a Raspberry Pi and an Arduino microcontroller. The Arduino is responsible for the low level management: motor control, servo control, LED control. The Raspberry Pi is responsible for the higer level control: talking to the XBox controller, ensure the robot si driving straight, when to move the putter vs when to move the motors, speed ramping and more. 
+
+In this architecture, the raspberry pi is sending strings of commands to the Arduino. The Arduino looks at the commands and executes the necessary code to make the desired actions happen. When there are no actions called for from the Pi, they communicate back and forth at 2hz with a heartbeat. If the Pi or Arduino fail to send or recieve a heartbeat signal, they will stop all motion and shut down their processes. This is an important safety mechanism to prevent run-away robots! 
 
 ## Connections
 Pi IP: 192.168.7.21
