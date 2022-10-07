@@ -91,5 +91,7 @@ All of the custom parts are 3D Printed on a filamnet printer with PLA.
 * Arduino:  software/drive_and_putt/drive_and_putt.ino
 * Raspberry Pi: software/deployed/drive_robot.py
 
+See the [software readme for more details](https://github.com/autonomousTurtle/Robot_Putter/tree/main/software)
+
 
 
