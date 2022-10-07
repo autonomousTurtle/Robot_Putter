@@ -6,7 +6,7 @@
 ## Table Of Contents
 1. [BOM](https://github.com/autonomousTurtle/Robot_Putter/blob/main/README.md#bom)
 2. [Assembly](https://github.com/autonomousTurtle/Robot_Putter/blob/main/README.md#assembly)
-3. [Wiring](https://github.com/autonomousTurtle/Robot_Putter/blob/main/README.md#wiring-diagram)
+3. [Wiring](https://github.com/autonomousTurtle/Robot_Putter/blob/main/README.md#wiring-images)
 4. [Software](https://github.com/autonomousTurtle/Robot_Putter/tree/main/software)
 
 
@@ -75,8 +75,8 @@ All of the custom parts are 3D Printed on a filamnet printer with PLA.
 #### Top Without Cover
 <img src="/images/top_no_cover.JPG" width="80%">
 
-### Wiring Diagram
-
+### Wiring Images
+<img src="/images/wiring1.JPG" width="80%">
 
 ### Software Architecture:
 
