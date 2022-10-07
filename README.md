@@ -78,6 +78,11 @@ All of the custom parts are 3D Printed on a filamnet printer with PLA.
 ### Wiring Images
 <img src="/images/wiring1.JPG" width="80%">
 
+<img src="/images/Wiring_Side_BEC.JPG" width="80%">
+
+<img src="/images/top_front_cover_only.JPG" width="80%">
+
+
 ### Software Architecture:
 
 * Arduino:  software/drive_and_putt/drive_and_putt.ino
