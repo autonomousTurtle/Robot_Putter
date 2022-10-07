@@ -1,6 +1,7 @@
 # Robot_Putter
 ### [May We Help](https://maywehelp.org/) Putt-Putt Robot
 
+<img src="/images/robot_putter_iso.JPG" width="80%">
 
 ## Table Of Contents
 1. [BOM](https://github.com/autonomousTurtle/Robot_Putter/blob/main/README.md#bom)
